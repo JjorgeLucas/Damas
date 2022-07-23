@@ -1,3 +1,5 @@
+import ferramentas
+
 class Maquina:
   """
       Classe que vai processar as jogadas do computador, gerenciá-las e
