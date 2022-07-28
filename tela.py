@@ -1,4 +1,6 @@
-import tkinter as Tk
+from tkinter import *
+import tkinter.ttk as ttk
+
 
 class Tela:
   """

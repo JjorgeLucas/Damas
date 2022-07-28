@@ -4,6 +4,7 @@ class Ferramentas:
       para todas as outras classes. Trata principalmente da gestão
       de arquivos.
   """
+
   #TXT e CSV
   def criaTXT():
     """
