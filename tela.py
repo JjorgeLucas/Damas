@@ -1,4 +1,12 @@
+<<<<<<< Updated upstream
 import tkinter as Tk
+=======
+from tkinter import *
+import tkinter.ttk as ttk
+
+from matplotlib import widgets
+
+>>>>>>> Stashed changes
 
 class Tela:
   """
@@ -14,9 +22,17 @@ class Tela:
     """
     pass
   
-  def get_value(self, inValue):
+  def get_value(self, widget_name):
     """
         Método que coleta informações geradas por Entry()
         e Button().
     """
     pass
+  def destroy(self, frame):
+    """
+        Método que destroi um frame a fim de exibir outro numa mesma
+        tela.
+    """
+    frame.destroy()
+    
+  def 
