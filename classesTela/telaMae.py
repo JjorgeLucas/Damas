@@ -4,11 +4,12 @@ import tkinter.ttk as ttk
 
 class Tela:
   """
-      Classe que gerencia a interface com que o usuário
-      vai interagir com durante o funcionamento do jogo.
+      Classe que agrupa métodos gerais da família
+      de classes de telas do Tkinter.
   """
   def __init__(self):
-    pass
+    self.window = Tk()
+    self.window.mainloop()
   
   def coloca_imagem(self,inImage,outImage):
     """
@@ -22,3 +23,4 @@ class Tela:
         e Button().
     """
     pass
+  

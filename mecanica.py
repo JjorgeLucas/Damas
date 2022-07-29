@@ -6,7 +6,7 @@ import log
 import maquina
 import pecas
 import tabuleiro
-import tela
+import classesTela.telaMae as telaMae
 
 
 class MecanicaGeral:
