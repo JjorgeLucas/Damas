@@ -38,7 +38,20 @@ class Tabuleiro:
     """
     pass
   
+  def geraTabuleiroMaquina():
+    """
+        Método auxiliar da classe Tela que gera um tabuleiro vazio
+        a fim de permitir pintar as casas no tabuleiro da interface
+        gráfica.
+    """
+    indices = range(-6, 8, 2)
+    tab = np.zeros(shape=[8, 8], dtype=np.int32)
+    for i in indices:
+          tab += np.eye(N=8, M=8, k=i, dtype=np.int32)
+    tab = [list(x) for x in tab]
+    return tab
+  
   
 
-# tabu = Tabuleiro()
-# print(tabu.tab)
+tabu = Tabuleiro()
+print(tabu.tab)
