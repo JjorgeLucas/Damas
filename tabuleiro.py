@@ -45,13 +45,15 @@ class Tabuleiro:
         gráfica.
     """
     indices = range(-6, 8, 2)
-    tab = np.zeros(shape=[8, 8], dtype=np.int32)
+    tab = np.zeros(shape=[8, 8], dtype=int)
     for i in indices:
-          tab += np.eye(N=8, M=8, k=i, dtype=np.int32)
+          tab += np.eye(N=8, M=8, k=i, dtype=int)
     tab = [list(x) for x in tab]
+    for row_index, row in enumerate(tab):
+      for col_index in range(len(row)):
+        row[col_index] = int(row[col_index])
     return tab
   
-  
 
-tabu = Tabuleiro()
-print(tabu.tab)
+
+print(Tabuleiro.geraTabuleiroMaquina())
