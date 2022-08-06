@@ -6,13 +6,11 @@ class Maquina:
       executá-las.
   """
 
-  def __init__(self, cor, dificuldade):
+  def __init__(self, cor):
     self.cor = cor
-    self.dificuldade = dificuldade
-
+    
   def jogadaMaquina():
     """
-        Método que tratará das jogadas co computador, de acordo com a
-        dificuldade.
+        Método que tratará das jogadas do computador.
     """
-    #usar self.dificuldade com IFs com condicional booleana
+    pass

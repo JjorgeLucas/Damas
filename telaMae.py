@@ -16,6 +16,7 @@ class Tela(ttk.Frame):
     self.window.geometry('960x600+200+30')
     self.window.resizable(False, False)
     self.window.configure(background='gray')
+    self.window.iconbitmap('images/icon.ico')
     
     # imagens
     self.dama_branca = PhotoImage(file='images/damaBranca.png')
@@ -23,6 +24,7 @@ class Tela(ttk.Frame):
     self.pedra_branca = PhotoImage(file='images/pedraBranca.png')
     self.pedra_preta = PhotoImage(file='images/pedraPreta.png')
     self.blank = PhotoImage(file='images/blank.png')
+    
     self.menu = PhotoImage(file='images/imgMenus.png')
     self.foto1 = PhotoImage(file='images/foto1.png')
     self.foto2 = PhotoImage(file='images/foto2.png')
@@ -37,13 +39,19 @@ class Tela(ttk.Frame):
     """
     pass
   
+  def destroi(self, frame):
+    """
+        Método que destroi um frame para exibir outro.
+    """
+    frame.destroy()  
+  
   def telaPartida(self):
     """
         Tela que será exibida durante a partida.
     """
     # board = Tabuleiro()
     s = ttk.Style()
-    s.configure('teste.TFrame', background='purple')
+    s.configure('teste.TFrame', background='#7A4A0A')
     s.configure('Branco.TLabel',
                 background='white',
                 foreground='green',
@@ -144,25 +152,23 @@ class Tela(ttk.Frame):
       for indice, label in enumerate(Labels[i]):
         if i % 2 == 0:
           if indice % 2 == 0:
-            label['style'] = 'Preto.TLabel'
-            label['image'] = self.pedra_preta
-          else:
-            label['image'] = self.blank
             label['style'] = 'Branco.TLabel'
+            label['image'] = self.blank
+          else:
+            label['style'] = 'Preto.TLabel'
+            label['image'] = self.blank
         
         else:
           if indice % 2 != 0:
-            label['image'] = self.dama_preta
-            label['style'] = 'Preto.TLabel'
-          else:
-            label['image'] = self.blank
             label['style'] = 'Branco.TLabel'
+            label['image'] = self.blank
+          else:
+            label['style'] = 'Preto.TLabel'
+            label['image'] = self.blank
           
 
     self.window.mainloop()
 
-# a= Tela()
-# a.telaPartida()
 
 
   def telaMenu(self):
@@ -170,19 +176,31 @@ class Tela(ttk.Frame):
         Tela que será exibida enquanto o usuário estiver no menu principal.
     """
     
-    # s = ttk.Style()
-    # s.configure()
+    s = ttk.Style()
+    s.configure('Menu.TButton', font = ('Verdana', 20))
     
     
     main_frameMenu = ttk.Frame(self.window)
     lbl_fundo = ttk.Label(main_frameMenu, image=self.menu)
     
-    # canvaMenu.create_image(image = self.menu)
-    
-    main_frameMenu.pack(expand=True, fill='both')
-    lbl_fundo.pack(expand=True, fill= 'both')
+    novo_jogo = ttk.Button(main_frameMenu, text= 'Novo jogo', style= "Menu.TButton")
+    carregar_jogo = ttk.Button(main_frameMenu, text= 'Carregar jogo', style= "Menu.TButton")
+    opcoes = ttk.Button(main_frameMenu, text= 'Opções', style= "Menu.TButton")
+    estatisticas = ttk.Button(main_frameMenu, text= 'Estatísticas', style= "Menu.TButton")
+    sair = ttk.Button(main_frameMenu, text='Sair', style="Menu.TButton", command= lambda: self.window.quit())
+
+
+    main_frameMenu.pack(expand=True, fill='both', side='right')
+    lbl_fundo.place(x=0,y=0)
+    novo_jogo.place(x=100, y=130)
+    carregar_jogo.place(x=100, y=215)
+    opcoes.place(x=100, y=300)
+    estatisticas.place(x=100, y=385)
+    sair.place(x=100, y=470)
+
     
     self.window.mainloop()
     
 a= Tela()
+# a.telaPartida()
 a.telaMenu()
