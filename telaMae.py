@@ -1,5 +1,8 @@
 # https: // www.flaticon.com/br/icone-gratis/verificadores-chineses_2006254?term = damas & related_id = 2006254
 
+from estatisticas import *
+from log import*
+from ferramentas import *
 from tabuleiro import *
 from tkinter import *
 import tkinter.ttk as ttk
@@ -19,17 +22,17 @@ class Tela(ttk.Frame):
     self.window.iconbitmap('images/icon.ico')
     
     # imagens
-    self.dama_branca = PhotoImage(file='images/damaBranca.png')
-    self.dama_preta = PhotoImage(file='images/damaPreta.png')
-    self.pedra_branca = PhotoImage(file='images/pedraBranca.png')
-    self.pedra_preta = PhotoImage(file='images/pedraPreta.png')
-    self.blank = PhotoImage(file='images/blank.png')
+    self.dama_branca = PhotoImage(file='images/pedras/damaBranca.png')
+    self.dama_preta = PhotoImage(file='images/pedras/damaPreta.png')
+    self.pedra_branca = PhotoImage(file='images/pedras/pedraBranca.png')
+    self.pedra_preta = PhotoImage(file='images/pedras/pedraPreta.png')
+    self.blank = PhotoImage(file='images/pedras/blank.png')
     
-    self.menu = PhotoImage(file='images/imgMenus.png')
-    self.foto1 = PhotoImage(file='images/foto1.png')
-    self.foto2 = PhotoImage(file='images/foto2.png')
-    self.foto3 = PhotoImage(file='images/foto3.png')
-    self.foto4 = PhotoImage(file='images/foto4.png')
+    self.menu = PhotoImage(file='images/fotos/imgMenus.png')
+    self.foto1 = PhotoImage(file='images/fotos/foto1.png')
+    self.foto2 = PhotoImage(file='images/fotos/foto2.png')
+    self.foto3 = PhotoImage(file='images/fotos/foto3.png')
+    self.foto4 = PhotoImage(file='images/fotos/foto4.png')
 
 
   def get_value(self, inValue):
@@ -39,11 +42,12 @@ class Tela(ttk.Frame):
     """
     pass
   
-  def destroi(self, frame):
+  def proximaTela(self, frame_anterior, frame_posterior):
     """
         Método que destroi um frame para exibir outro.
     """
-    frame.destroy()  
+    frame_anterior.destroy()
+    frame_posterior()
   
   def telaPartida(self):
     """
@@ -170,7 +174,17 @@ class Tela(ttk.Frame):
     self.window.mainloop()
 
 
-
+  def telaEstatisticas(self):
+    """
+        Tela que será exibida na parte de estatísticas do jogo.
+    """
+    main_frameEstatisticas = ttk.Frame(self.window)
+  
+  
+  
+    main_frameEstatisticas.pack(expand= True, fill='both')
+    self.window.mainloop()
+  
   def telaMenu(self):
     """
         Tela que será exibida enquanto o usuário estiver no menu principal.
@@ -186,8 +200,10 @@ class Tela(ttk.Frame):
     novo_jogo = ttk.Button(main_frameMenu, text= 'Novo jogo', style= "Menu.TButton")
     carregar_jogo = ttk.Button(main_frameMenu, text= 'Carregar jogo', style= "Menu.TButton")
     opcoes = ttk.Button(main_frameMenu, text= 'Opções', style= "Menu.TButton")
-    estatisticas = ttk.Button(main_frameMenu, text= 'Estatísticas', style= "Menu.TButton")
-    sair = ttk.Button(main_frameMenu, text='Sair', style="Menu.TButton", command= lambda: self.window.quit())
+    estatisticas = ttk.Button(main_frameMenu, text= 'Estatísticas', style= "Menu.TButton",
+                              command=self.proximaTela())
+    sair = ttk.Button(main_frameMenu, text='Sair', style="Menu.TButton", 
+                      command= lambda: self.window.quit())
 
 
     main_frameMenu.pack(expand=True, fill='both', side='right')
@@ -197,10 +213,11 @@ class Tela(ttk.Frame):
     opcoes.place(x=100, y=300)
     estatisticas.place(x=100, y=385)
     sair.place(x=100, y=470)
-
     
     self.window.mainloop()
     
+    
 a= Tela()
 # a.telaPartida()
-a.telaMenu()
+# a.telaMenu()
+# a.telaEstatisticas()

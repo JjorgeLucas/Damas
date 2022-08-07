@@ -11,7 +11,6 @@ class Jogador:
         Cria um novo jogador.
     """
     self.nome = nome
-    # self.nivel = 0 TALVEZ IMPLEMENTE NÍVEL
 
   def getInfo(self):
     """
